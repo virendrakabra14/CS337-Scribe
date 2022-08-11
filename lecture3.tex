@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{scribe}
+\usepackage{listings}
+
+\Scribe{Akshay, Alan, Lakshya, Virendra}
+\Lecturer{Abir De}
+\LectureNumber{3}
+\LectureDate{11 August 2022}
+\LectureTitle{ML Terminology}
+
+\lstset{style=mystyle}
+
+\begin{document}
+	\MakeScribeTop
+
+%#############################################################
+%#############################################################
+%#############################################################
+%#############################################################
+
+%Intro
+Over the last two lectures, we reviewed probability and linear algebra. Now, we introduce some basic ML terminology.
+
+\section{An Example}
+
+This example is in continuation from Lecture 2. We have a graph $G = (V,E)$, where $V=\{1,\ldots,n\}$ is the set of vertices, and $E$ is the set of edges. Define the value $x_i(t)$ to be the `opinion' of node $i$ at time $t$. ${x_1(0),\dots,x_n(0)}$ are given. For $t\ge 0$,
+\begin{equation} \label{eq:1}
+	x_i(t+1) = \frac {\sum_{j\in \mathcal{N}(i)} x_j(t)}{|\mathcal{N}(i)|}
+\end{equation}
+where $\mathcal{N}(i)$ denotes the set of neighbors of node $i$. That is, the opinion of $i$ at time $t+1$ is the average of the opinions of its neighbors at time $t$.
+\\
+\noindent Consider $\x(t) = [x_1(t) \cdots x_n(t)]^T$. Define $\A \in \mathbb{R}^{n\times n}$ such that $\A\x(t) = \x(t+1)$. From \eqref{eq:1}, $\A$ is a doubly-stochastic matrix, i.e., its entries are non-negative, and its rows and columns add up to $1$.
+\\
+
+\noindent We state the following result from \cite{doublystochastic}. A stochastic matrix $\M$ is called semi-positive if all entries of some power $\M^\alpha$ are positive.
+\begin{theorem}
+	If $\M \in \mathbb{R}^{n\times n}$ is a semi-positive doubly stochastic matrix, then $\lim_{t\to \infty} \M^t = \frac{1}{n}\J$, where $\J \in \mathbb{R}^{n\times n}$ with all entries $1$.
+\end{theorem}
+
+
+\noindent Thus, if $\A$ is semi-positive and doubly stochastic, then for all nodes $i$, $\lim_{t\to \infty} x_i(t) = \frac{\sum_{j=1}^{n} x_j(0)}{n}$
+
+
+\section{Image Classification Problem}
+
+\section{Training and Validation Sets}
+
+
+%%%%%%%%%%% If you don't have citations then comment the lines below:
+%
+\bibliographystyle{abbrv}           % if you need a bibliography
+\bibliography{mybib}                % assuming yours is named mybib.bib
+
+
+%%%%%%%%%%% end of doc
+\end{document}
