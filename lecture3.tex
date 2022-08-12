@@ -58,7 +58,7 @@ where $\mathcal{N}(i)$ denotes the set of neighbors of node $i$. That is, the op
 We are given a set of images $\{I_1, \dots, I_n\}$, each corresponding to exactly one of three animal classes: cat, dog, or tiger. The pixel data of $I_i$ is encoded into feature-matrix $X_i \in \mathbb{R}^{d\times d}$, and IDs of the three classes are $\{0,1,2\}$ respectively. \textit{Binary} classification problems involve only two labels, usually $\{0,1\}$.
 \\
 
-\noindent The goal is to correctly predict the label of any (unseen) image. We can't possibly write an algorithm for this prediction, since the model itself changes with the input space. Moreover, an algorithm with correct mappings for given set $\{X_i\}$ will perform poorly on unseen images. This is because the model has been completely overfit to these images.
+\noindent The goal is to correctly predict the label of any (unseen) image. We can't possibly write an algorithm for this prediction, since the model itself changes with the input space. Moreover, an algorithm with one to one mappings for given set $\{X_i\}$ will perform poorly on unseen images. This is because the model has been completely overfit to these images.
 \\
 
 \noindent Since we need to train a model using some data, the problem with just the set of $X_i$'s is ill-defined. We also require the labels ($y_i$'s) for a set of examples. This brings the idea of a training set.
