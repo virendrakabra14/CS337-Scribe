@@ -6,6 +6,8 @@
 \usepackage{listings}
 \usepackage{url} 
 \usepackage{placeins}
+\usepackage{microtype} 
+\usepackage[hyphens]{url}
 
 \Scribe{Akshay, Alan, Lakshya, Virendra}
 \Lecturer{Abir De}
@@ -136,8 +138,12 @@ In practice, we often train a variety of different models on the same data. This
 
 %%%%%%%%%%% If you don't have citations then comment the lines below:
 %
+
+{\raggedright % <================================== only left justified!
 \bibliographystyle{abbrv}           % if you need a bibliography
 \bibliography{mybib}                % assuming yours is named mybib.bib
+} % <============================================== ends left justifing!
+
 
 
 %%%%%%%%%%% end of doc
