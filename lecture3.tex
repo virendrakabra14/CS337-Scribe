@@ -4,7 +4,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{scribe}
 \usepackage{listings}
-\usepackage{url} 
+
+\usepackage[hyphens]{url}
+
 \usepackage{placeins}
 
 \Scribe{Akshay, Alan, Lakshya, Virendra}
@@ -79,7 +81,7 @@ We are given a set of images $\{I_1, \dots, I_n\}$, each corresponding to exactl
 
 \centering
 \includegraphics[scale=0.5]{classification.png}
-\caption{Dog or Cat? A binary classification example^\cite{binaryclassification}}
+\caption{Dog or Cat? A binary classification example \cite{binaryclassification}}
 \end{figure}
 
 
@@ -103,20 +105,20 @@ How do we know that the algorithm is ``ready'' for use? Relying only on training
 
 \section{(Bonus) Model Selection and the Three-Way Split}
 \noindent
-In practice, we often train a variety of different models on the same data. This is possible because we have several choices for the architecture of the model and every architecture in turn has several \textit{parameters} we can tune to improve the accuracy. Ideally we'd like to measure the performance of each of these models and choose the one that performs the best on unseen data. 
+In practice, we often train a variety of different models on the same data. This is because we have several choices for the architecture of the model, and every architecture in turn has several \textit{parameters} that we can tune to improve performance. Ideally we'd like to measure the performance of each of these models and choose the one that performs best on unseen data. 
 \\
 
-\noindent That is, we first train the model on one set, then choose the model which performs best on the second set and, once we are done finalizing the model, we use a third set see how well our model generalizes on new data. The second set is called the \textbf{validation set}. The third set, which, in principle, shouldn't be touched until we are done with the complete training of the model, is known as the \textbf{test set}. 
+\noindent That is, we first train the model on one set, and choose the model which performs best on the second set. Once we are done finalizing the model, we use a third set to see how well our model generalizes on new data. The second set is called the \textbf{validation set}. The third set, which, in principle, shouldn't be touched until we are done with the complete training of the model, is known as the \textbf{test set}. 
 \\
+
 \begin{figure}[h]
-
 \centering
 \includegraphics[scale=0.3]{validation.png}
-\caption{Three-Way Split into Training, Validation and Test Sets^\cite{twowaysplit}}
+\caption{Three-Way Split into Training, Validation and Test Sets \cite{twowaysplit}}
 \end{figure}
 
 
-\noindent The fact that we were chose our model based on the second set implies that our model is \textit{learning} the second set. This motivates the need for a third set, without which we'd never know how well our final model generalizes on unseen data because it has already ''seen'' the validation set. 
+\noindent The fact that we choose our model based on the second set implies that our model is \textit{learning} the second set. This motivates the need for a third set, without which we'd never know how well our final model generalizes on unseen data because it has already ``seen'' the validation set.
 \\
 
 \noindent We talked about training, validation and test sets. But sometimes, we don't have enough data to justify a three-way split. It is in these cases that we employ a technique known as \textbf{cross-validation}.  \cite{crossvalidation} is a great place to read more about it.
@@ -126,7 +128,7 @@ In practice, we often train a variety of different models on the same data. This
 
 \centering
 \includegraphics[scale=0.5]{crossvalidation.png}
-\caption{Cross-Validation^\cite{crossvalidation}}
+\caption{Cross-Validation \cite{crossvalidation}}
 \end{figure}
 
 
