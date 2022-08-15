@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{scribe}
 \usepackage{listings}
+\usepackage{url} 
+\usepackage{placeins}
 
 \Scribe{Akshay, Alan, Lakshya, Virendra}
 \Lecturer{Abir De}
@@ -70,8 +72,16 @@ where $\mathcal{N}(i)$ denotes the set of neighbors of node $i$. That is, the op
 
 \section{Image Classification Problem}
 
+
 We are given a set of images $\{I_1, \dots, I_n\}$, each corresponding to exactly one of three animal classes: cat, dog, or tiger. The pixel data of $I_i$ is encoded into feature-matrix $X_i \in \mathbb{R}^{d\times d}$, and IDs of the three classes are $\{0,1,2\}$ respectively. \textit{Binary} classification problems involve only two labels, usually $\{0,1\}$.
 \\
+\begin{figure}[h]
+
+\centering
+\includegraphics[scale=0.5]{classification.png}
+\caption{Dog or Cat? A binary classification example}
+\end{figure}
+
 
 \noindent The goal is to correctly predict the label of any (unseen) image. Unseen images are inputs that were not revealed during the algorithm's development. We can't possibly write an algorithm for this prediction, since the model itself changes with the input space. Moreover, an algorithm with one-to-one mappings for the given set $\{X_i\}$ will perform poorly on unseen images. This is because the model has completely overfit to these images.
 \\
@@ -89,6 +99,40 @@ For the classification problem, the training set consists of pairs $(X_i,y_i)$. 
 
 \subsection{Validation Set}
 How do we know that the algorithm is ``ready'' for use? Relying only on training set performance isn't a good idea, since the model would have overfit on this data. Thus, we reserve a section of the training data as the validation set. After training the model (on the train set alone), its performance is evaluated on the validation set. Since the latter is unseen during training, we get a more reliable estimate of the model's performance.
+
+
+\section{(Bonus) Model Selection and the Three-Way Split}
+\noindent
+In practice, we often train a variety of different models on the same data. This is possible because we have several choices for the architecture of the model and every architecture in turn has several \textit{parameters} we can tune to improve the accuracy. Ideally we'd like to measure the performance of each of these models and choose the one that performs the best on unseen data. 
+\\
+
+\noindent That is, we first train the model on one set, then choose the model which performs best on the second set and, once we are done finalizing the model, we use a third set see how well our model generalizes on new data. The second set is called the \textbf{validation set}. The third set, which, in principle, shouldn't be touched until we are done with the complete training of the model, is known as the \textbf{test set}. 
+\\
+\begin{figure}[h]
+
+\centering
+\includegraphics[scale=0.3]{validation.png}
+\caption{Three-Way Split into Training, Validation and Test sets}
+\end{figure}
+
+
+\noindent The fact that we were chose our model based on the second set implies that our model is \textit{learning} the second set. This motivates the need for a third set, without which we'd never know how well our final model generalizes on unseen data because it has already ''seen'' the validation set. 
+\\
+
+\noindent We talked about training, validation and test sets. But sometimes, we don't have enough data to justify a three-way split. It is in these cases that we employ a technique known as \textbf{cross-validation}.  \cite{crossvalidation} is a great place to read more about it.
+
+
+\begin{figure}[h]
+
+\centering
+\includegraphics[scale=0.5]{crossvalidation.png}
+\caption{Cross-Validation}
+\end{figure}
+
+
+\FloatBarrier
+
+
 
 %%%%%%%%%%% If you don't have citations then comment the lines below:
 %
